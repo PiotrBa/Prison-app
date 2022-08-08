@@ -24,7 +24,8 @@ public class PrisonerDetails {
     public PrisonerDetails() {}
 
 
-    public Long id() {
+
+    public Long getId() {
         return id;
     }
 

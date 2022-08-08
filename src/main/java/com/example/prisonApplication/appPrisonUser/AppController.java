@@ -8,7 +8,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/prision/prisioner")
-public class AppController {
+public class AppController{
 
     private final AppImplementation appImplementation;
 
@@ -17,28 +17,29 @@ public class AppController {
         this.appImplementation = appImplementation;
     }
 
+
     @GetMapping
     public List<PrisonerDetails> getPrisoner(){
         return appImplementation.findAllPrisoners();
     }
 
     @GetMapping("/{prisonerId}")
-    public PrisonerDetails getOnePrisoner(Long prisonerId){
+    public PrisonerDetails getOnePrisoner(@PathVariable Long prisonerId){
         return appImplementation.findOnePrisoner(prisonerId);
     }
 
     @PostMapping("/add")
-    public PrisonerDetails addPrisoner(Map<String, Object> map){
+    public PrisonerDetails addPrisoner(@RequestBody Map<String, Object> map){
         return appImplementation.addPrisoner(map);
     }
 
     @PutMapping("/{prisonerId}")
-    public PrisonerDetails editPrisonerDetails (Long prisonerId, Map<String, Object>map){
+    public PrisonerDetails editPrisonerDetails (@PathVariable Long prisonerId, @RequestBody Map<String, Object>map){
         return appImplementation.editPrisoner(prisonerId, map);
     }
 
     @DeleteMapping("/{prisonerId}")
-    public String deletePrisoner (Long prisonerId){
+    public String deletePrisoner (@PathVariable Long prisonerId){
         return appImplementation.deletePrisoner(prisonerId);
     }
 

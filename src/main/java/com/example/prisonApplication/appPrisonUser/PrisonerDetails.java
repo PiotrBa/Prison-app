@@ -1,6 +1,7 @@
 package com.example.prisonApplication.appPrisonUser;
 
 import javax.persistence.*;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
@@ -8,7 +9,7 @@ import java.util.Date;
 public class PrisonerDetails {
 
     @Id
-    @SequenceGenerator(name = "prisoner_sequence", sequenceName = "prisoner_sequence", allocationSize = 1)
+    @SequenceGenerator(sequenceName = "prisoner_sequence", name = "prisoner_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prisoner_sequence")
     private Long id;
     private String firstName;
@@ -18,12 +19,12 @@ public class PrisonerDetails {
     private Date firstDayOfPunishment;
     private String lastDateOfPunishment;
     private String description;
+    private Boolean isPublished;
 
     public PrisonerDetails() {}
 
 
-
-    public Long getId() {
+    public Long id() {
         return id;
     }
 
@@ -81,5 +82,29 @@ public class PrisonerDetails {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getPublished() {
+        return isPublished;
+    }
+
+    public void setPublished(Boolean published) {
+        isPublished = published;
+    }
+
+
+    @Override
+    public String toString() {
+        return "PrisonerDetails{" +
+                "prisonerId=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", firstDayOfPunishment=" + firstDayOfPunishment +
+                ", lastDateOfPunishment='" + lastDateOfPunishment + '\'' +
+                ", description='" + description + '\'' +
+                ", isPublished=" + isPublished +
+                '}';
     }
 }

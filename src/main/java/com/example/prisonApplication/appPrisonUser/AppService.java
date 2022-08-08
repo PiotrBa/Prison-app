@@ -7,7 +7,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -24,7 +23,7 @@ public class AppService implements AppImplementation{
 
     @Override
     public List<PrisonerDetails> findAllPrisoners() {
-        return prisonerRepository.findAll();
+        return prisonerRepository.findAllByIsPublished(true);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class AppService implements AppImplementation{
 
     @Override
     public PrisonerDetails addPrisoner(Map<String, Object> map) {
-        PrisonerDetails prisonerDetails = new PrisonerDetails();
+        PrisonerDetails prisonerDetails = new PrisonerDetails();;
         prisonerDetails.setFirstName(map.get("firstName").toString());
         prisonerDetails.setLastName(map.get("lastName").toString());
         prisonerDetails.setDateOfBirth(map.get("dateOfBirth").toString());
@@ -44,6 +43,7 @@ public class AppService implements AppImplementation{
         prisonerDetails.setFirstDayOfPunishment(Date.valueOf(LocalDate.now()));
         prisonerDetails.setLastDateOfPunishment(map.get("lastDateOfPunishment").toString());
         prisonerDetails.setDescription(map.get("description").toString());
+        prisonerDetails.setPublished(true);
         return prisonerDetails;
     }
 

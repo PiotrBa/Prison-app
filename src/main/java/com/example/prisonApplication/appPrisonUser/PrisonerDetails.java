@@ -92,19 +92,4 @@ public class PrisonerDetails {
         isPublished = published;
     }
 
-
-    @Override
-    public String toString() {
-        return "PrisonerDetails{" +
-                "prisonerId=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", nationality='" + nationality + '\'' +
-                ", firstDayOfPunishment=" + firstDayOfPunishment +
-                ", lastDateOfPunishment='" + lastDateOfPunishment + '\'' +
-                ", description='" + description + '\'' +
-                ", isPublished=" + isPublished +
-                '}';
-    }
 }

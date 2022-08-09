@@ -12,7 +12,6 @@ import java.util.Optional;
 @Service
 public class AppService implements AppImplementation{
 
-    private final static String DELETE_MSG = "The prisoner has been removed from the database.";
     private PrisonerRepository prisonerRepository;
 
     @Autowired
@@ -39,12 +38,12 @@ public class AppService implements AppImplementation{
         prisonerDetails.setFirstName(map.get("firstName").toString());
         prisonerDetails.setLastName(map.get("lastName").toString());
         prisonerDetails.setDateOfBirth(map.get("dateOfBirth").toString());
-        prisonerDetails.setNationality("nationality");
+        prisonerDetails.setNationality(map.get("nationality").toString());
         prisonerDetails.setFirstDayOfPunishment(Date.valueOf(LocalDate.now()));
         prisonerDetails.setLastDateOfPunishment(map.get("lastDateOfPunishment").toString());
         prisonerDetails.setDescription(map.get("description").toString());
         prisonerDetails.setPublished(true);
-        return prisonerDetails;
+        return prisonerRepository.save(prisonerDetails);
     }
 
     @Override
@@ -52,16 +51,15 @@ public class AppService implements AppImplementation{
         Optional<PrisonerDetails> optional = prisonerRepository.findById(prisonerId);
         PrisonerDetails prisonerDetails = optional.orElseThrow(()-> new RuntimeException("The prisoner id: " + prisonerId +  " does not exist"));
         prisonerDetails.setDescription(map.get("description").toString());
-        return editPrisoner(prisonerId, map);
-
-
+        System.out.println("Edition profil of prisoner number: " + prisonerId + ".");
+        return prisonerRepository.save(prisonerDetails);
     }
-
     @Override
-    public String deletePrisoner(Long prisonerId) {
+    public PrisonerDetails deletePrisoner(Long prisonerId) {
         Optional<PrisonerDetails> optional = prisonerRepository.findById(prisonerId);
         PrisonerDetails prisonerDetails = optional.orElseThrow(()-> new RuntimeException("The prisoner id: " + prisonerId +  " does not exist"));
         prisonerRepository.delete(prisonerDetails);
-        return DELETE_MSG;
+        System.out.println("Delete profil of prisoner number: " + prisonerId + ".");
+        return prisonerRepository.save(prisonerDetails);
     }
 }

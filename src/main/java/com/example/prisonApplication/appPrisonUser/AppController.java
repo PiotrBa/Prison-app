@@ -39,7 +39,7 @@ public class AppController{
     }
 
     @DeleteMapping("/{prisonerId}")
-    public String deletePrisoner (@PathVariable Long prisonerId){
+    public PrisonerDetails deletePrisoner (@PathVariable Long prisonerId){
         return appImplementation.deletePrisoner(prisonerId);
     }
 

@@ -9,7 +9,7 @@ import java.util.Date;
 public class PrisonerDetails {
 
     @Id
-    @SequenceGenerator(sequenceName = "prisoner_sequence", name = "prisoner_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "prisoner_sequence", sequenceName = "prisoner_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prisoner_sequence")
     private Long id;
     private String firstName;

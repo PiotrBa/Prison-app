@@ -10,5 +10,5 @@ public interface AppImplementation {
     PrisonerDetails findOnePrisoner (Long prisonerId);
     PrisonerDetails addPrisoner (Map<String, Object> map);
     PrisonerDetails editPrisoner (Long prisonerId, Map<String, Object> map);
-    String deletePrisoner (Long prisonerId);
+    PrisonerDetails deletePrisoner (Long prisonerId);
 }

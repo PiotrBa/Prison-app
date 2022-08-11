@@ -1,5 +1,6 @@
 package com.example.prisonApplication.appPrisonUser;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,14 +9,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/prision/prisioner")
+@AllArgsConstructor
 public class AppController{
 
     private final AppImplementation appImplementation;
-
-    @Autowired
-    public AppController(AppImplementation appImplementation) {
-        this.appImplementation = appImplementation;
-    }
 
 
     @GetMapping

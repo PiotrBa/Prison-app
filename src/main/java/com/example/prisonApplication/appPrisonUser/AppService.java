@@ -1,5 +1,6 @@
 package com.example.prisonApplication.appPrisonUser;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +11,10 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class AppService implements AppImplementation{
 
     private PrisonerRepository prisonerRepository;
-
-    @Autowired
-    public AppService(PrisonerRepository prisonerRepository) {
-        this.prisonerRepository = prisonerRepository;
-    }
 
 
     @Override

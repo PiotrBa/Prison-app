@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/prision/prisioner")
+@RequestMapping("/api/prision")
 @AllArgsConstructor
 public class AppController{
 
@@ -25,7 +25,7 @@ public class AppController{
         return appImplementation.findOnePrisoner(prisonerId);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addprisioner")
     public PrisonerDetails addPrisoner(@RequestBody Map<String, Object> map){
         return appImplementation.addPrisoner(map);
     }

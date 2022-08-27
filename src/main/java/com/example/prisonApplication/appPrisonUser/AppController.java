@@ -25,7 +25,7 @@ public class AppController{
         return appImplementation.findOnePrisoner(prisonerId);
     }
 
-    @PostMapping("/addprisioner")
+    @PostMapping("/add")
     public PrisonerDetails addPrisoner(@RequestBody Map<String, Object> map){
         return appImplementation.addPrisoner(map);
     }

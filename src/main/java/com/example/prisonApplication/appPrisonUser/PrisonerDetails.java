@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table
+
 public class PrisonerDetails {
 
     @Id
